@@ -1,0 +1,176 @@
+// color vars
+
+$black: #000;
+$black-light: #0E0E0E;
+$white: #fff;
+$yellow: #C0965C;
+$yellow-dark: #98784e;
+$gray-dark: #1C1C1B;
+$gray: #6C6C6C;
+
+$tablet: 992px;
+$mobile: 576px;
+
+// default styles
+
+body {
+    margin: 0;
+    padding: 0;
+    background: $black-light;
+    color: $white;
+    font-family: 'Geometria';
+    overflow-x: hidden;
+    cursor: default;
+}
+
+body *::-moz-selection {
+    background: $yellow;
+    color: $white;
+}
+
+body *::-webkit-selection {
+    background: $yellow;
+    color: $white;
+}
+
+body *::selection {
+    background: $yellow;
+    color: $white;
+}
+
+#app {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container {
+    width: 100%;
+    transition: all .3s;
+
+    &_active {
+        margin-left: 234px;
+
+        @media screen and (max-width: 1440px) {
+          margin-left: 0px;
+        }
+
+    }
+}
+
+.button {
+    padding: 28px 44px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Geometria;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: $white;
+    text-decoration: none;
+    background: $yellow;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background: $yellow-dark;
+    }
+
+    &:disabled, &_disabled {
+        opacity: 0.1;
+        background: #141414;
+        cursor: no-drop;
+
+        &:hover {
+            opacity: 0.1 !important;
+            background: #141414 !important;
+        }
+
+    }
+
+    &_active {
+        opacity: 1;
+        background: $yellow;
+        cursor: pointer;
+
+        &:hover {
+            background: $yellow-dark !important;
+        }
+
+    }
+
+}
+
+.input {
+    padding: 0 30px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 0;
+    outline: none;
+    font-family: Geometria;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 113.22%;
+    color: $white;
+    transition: all .3s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+}
+
+.button-close {
+    top: 4px;
+    right: -4px;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    
+    &:hover {
+        .button-close__line {
+            background: $yellow;
+        }
+    }
+
+    &__line {
+        position: absolute;
+        width: 25px;
+        height: 3px;
+        background: $gray;
+        transition: all .3s;
+
+        &:nth-child(1) {
+            margin: 8px 0 0 0;
+            transform: rotate(45deg);
+        }
+
+        &:nth-child(2) {
+            opacity: 1;
+        }
+
+        &:last-child {
+            margin: 8px 0 0 0;
+            transform: rotate(-45deg);
+        }
+
+    }
+}
+
+// animations
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
